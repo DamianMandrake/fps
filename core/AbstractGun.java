@@ -7,11 +7,13 @@ public abstract class AbstractGun {
     protected int x;
     protected int y;
     private GunCharacteristics gunCharacteristics;
-    public AbstractGun(int x,int y,String name,GunCharacteristics gunChars){
+    private int ownerId;
+    public AbstractGun(int x,int y,String name,GunCharacteristics gunChars,int ownerId){
         this.x = x;
         this.y = y;
         this.name = name;
         this.gunCharacteristics = gunChars;
+        this.ownerId = ownerId;
 
     }
 
@@ -67,6 +69,8 @@ public abstract class AbstractGun {
     protected abstract class Bullet{
         protected int x;
         protected int y;
+        protected int xoffset =20;
+        protected int yoffset = 0;
         public Bullet(int x,int y){
             this.x=x;
             this.y=y;
@@ -84,6 +88,20 @@ public abstract class AbstractGun {
          * Callback triggered when a gun is painted
          * **/
         public abstract void paintBullet(Graphics g);
+
+        /**
+         * TODO CHANGE THIS TO
+         * **/
+        protected void incrementXAndY(int xoffset,int yoffset){
+            this.x += xoffset;
+            this.y += yoffset;
+
+        }
+
+        @Override
+        public String toString(){
+            return "{id:"+AbstractGun.this.ownerId+", bx:"+this.x+", by:"+this.y+"}";
+        }
 
 
     }

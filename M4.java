@@ -32,14 +32,22 @@ public class M4 extends AbstractGun {
 
 
     class M4Bullet extends Bullet{
+        int oldx,oldy;
         public M4Bullet(int x,int y){
             super(x,y);
+            this.oldx =this.oldy = -1;
         }
         @Override
         public void paintBullet(Graphics g) {
+/*
+            g.setColor(Color.WHITE);
+            g.fillArc(this.oldx, this.oldy, M4.WIDTH-20,M4.WIDTH-20,0,360);
+            g.setColor(Color.BLACK);*/
             g.fillArc(this.x, this.y, M4.WIDTH-20,M4.WIDTH-20,0,360);
-            this.x += 20;
 
+            this.oldx = this.x;
+            this.oldy = this.y;
+            this.incrementXAndY();
         }
         @Override
         public int damagePerBullet(){

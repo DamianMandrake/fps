@@ -37,12 +37,17 @@ public class MainFrame extends Frame {
     @Override
     public void paint(Graphics g){
         this.engine.paint(g);
+
         this.bulletHandler.paintThemAll(g);
     }
 
     @Override
     public void repaint(){
-        super.repaint();
+        Graphics g = getGraphics();
+        g.setColor(Color.WHITE);
+        g.fillRect(0,0,600,600);
+        g.setColor(Color.BLACK);
+        this.paint(g);
     }
 
     public static void main(String ap[]){

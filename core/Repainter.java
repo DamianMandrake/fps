@@ -20,14 +20,14 @@ public class Repainter extends Thread{
         while(true){
             try {
                 Thread.sleep(250);
-                //this.frame.repaint();
-                Graphics g = this.frame.getGraphics();
+                this.frame.repaint();
+                /*Graphics g = this.frame.getGraphics();
                 g.setColor(Color.WHITE);
-                g.fillRect(0,0,1000,1000);
+                //g.fillRect(0,0,1000,1000);
                 g.setColor(Color.BLACK);
                 this.engine.paint(g);
                 this.bulletHandler.paintThemAll(g);
-            }catch (InterruptedException ie){
+            */}catch (InterruptedException ie){
                 ie.printStackTrace();
             }
         }

@@ -48,8 +48,10 @@ public class Engine {
     }
 
     public void paint(Graphics g){
+        //this.currentPlayer.paintOldPlayer(g);
         this.currentPlayer.paintPlayer(g);
         for (Long playerId: this.players.keySet()) {
+            //this.players.get(playerId).paintOldPlayer(g);
             this.players.get(playerId).paintPlayer(g);
         }
     }
@@ -58,7 +60,7 @@ public class Engine {
 
     class CustomKeyListener extends KeyAdapter{
         @Override
-        public void keyTyped(KeyEvent e) {
+        public void keyPressed(KeyEvent e) {
             int currentKey = e.getKeyChar();
             AbstractPlayer.AbstractControls controls = AbstractPlayer.getControls();
             if(controls != null) {

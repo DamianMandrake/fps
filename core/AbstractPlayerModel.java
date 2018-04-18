@@ -1,4 +1,7 @@
 package core;
+
+import java.awt.*;
+
 /**
  * A model class for holding lan players
  *
@@ -60,6 +63,10 @@ public class AbstractPlayerModel {
 
     public void setScore(int score) {
         this.score = score;
+    }
+
+    public void paintPlayer(Graphics g){
+        g.drawRect(this.x, this.y, 80,100);
     }
 
 }
