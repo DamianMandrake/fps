@@ -14,8 +14,8 @@ public class Player extends AbstractPlayer {
 
     public Player(int x, int y, String name, AbstractGun gun){
         super(x,y,name,gun);
-        if(AbstractPlayer.getControls() == null)
-            AbstractPlayer.setAbstractControls(new Controls());
+
+        super.setAbstractControls(new Controls());
         super.setHitBox(new Hitbox());
     }
 

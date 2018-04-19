@@ -10,9 +10,21 @@ public class M4 extends AbstractGun {
     private final static String name = "m4";
     private static final GunCharacteristics gunChars = getChars();
     private final static int WIDTH = 30;
+    private boolean isReverse;
 
-    public M4(int x,int y){
+    private int bulletxDelta,bulletyDelta ;
+    public M4(int x,int y, boolean isReverse){
         super(x,y,name,gunChars);
+        this.isReverse = isReverse;
+        if(this.isReverse) {
+            bulletxDelta = -40;
+            bulletyDelta = -10;
+        }else
+        {
+            bulletxDelta = 40;
+            bulletyDelta = 10;
+        }
+
     }
 
     private static GunCharacteristics getChars(){
@@ -26,16 +38,22 @@ public class M4 extends AbstractGun {
 
     @Override
     public Bullet shoot() {
-        return new M4Bullet(this.x+20,this.y+20);
+
+        return new M4Bullet(this.x+ this.bulletxDelta,this.y +this.bulletyDelta, this.isReverse);
     }
 
 
 
     class M4Bullet extends Bullet{
         int oldx,oldy;
-        public M4Bullet(int x,int y){
+        public M4Bullet(int x,int y,boolean isReverse){
             super(x,y);
             this.oldx =this.oldy = -1;
+            if(isReverse) {
+                this.xoffset = -20;
+                this.yoffset = 0;
+            }
+
         }
         @Override
         public void paintBullet(Graphics g) {
@@ -51,7 +69,7 @@ public class M4 extends AbstractGun {
         }
         @Override
         public int damagePerBullet(){
-            return 20;
+            return 5;
         }
     }
 }

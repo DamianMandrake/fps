@@ -1,8 +1,13 @@
-package core;
+import core.AbstractGun;
+import core.AbstractPlayer;
 
-import java.awt.*;
-import java.awt.event.MouseEvent;
+import java.awt.Graphics;
+import java.awt.Color;
 
+/**
+ * This class exists only because of the different control scheme... Could just set a
+ * subclass of AbstractControls...
+ * **/
 public class Player2 extends AbstractPlayer {
     private final static int WIDTH = 70;
     private int maxX = 40;
@@ -11,14 +16,15 @@ public class Player2 extends AbstractPlayer {
 
     public Player2(int x, int y, String name, AbstractGun gun){
         super(x,y,name,gun);
-        if(AbstractPlayer.getControls() == null)
-            AbstractPlayer.setAbstractControls(new Player2.Controls());
+        super.setAbstractControls(new Controls());
         super.setHitBox(new Player2.Hitbox());
     }
 
     @Override
     public void paintPlayer(Graphics g) {
         super.paintPlayer(g);
+        System.out.println("painting 2");
+        g.setColor(Color.BLACK);
         g.drawRect(this.x, this.y, WIDTH, HEIGHT);
 
     }

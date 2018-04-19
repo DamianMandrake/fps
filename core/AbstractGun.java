@@ -8,14 +8,23 @@ public abstract class AbstractGun {
     protected int y;
     private GunCharacteristics gunCharacteristics;
     private int ownerId;
-    public AbstractGun(int x,int y,String name,GunCharacteristics gunChars,int ownerId){
+    private Bullet bullet;
+    public AbstractGun(int x,int y,String name,GunCharacteristics gunChars){
         this.x = x;
         this.y = y;
         this.name = name;
         this.gunCharacteristics = gunChars;
-        this.ownerId = ownerId;
+        this.ownerId = -1;
 
     }
+
+    public void setBullet(Bullet bullet){this.bullet = bullet;}
+
+    public Bullet getBullet(){return this.bullet;}
+
+    public void setOwnerId(int ownerId){this.ownerId = ownerId;}
+
+    public int getOwnerId(){return this.ownerId;}
 
     public String getName() {
         return name;
@@ -89,20 +98,20 @@ public abstract class AbstractGun {
          * **/
         public abstract void paintBullet(Graphics g);
 
-        /**
-         * TODO CHANGE THIS TO
-         * **/
-        protected void incrementXAndY(int xoffset,int yoffset){
+
+        protected void incrementXAndY(){
             this.x += xoffset;
             this.y += yoffset;
 
         }
+
 
         @Override
         public String toString(){
             return "{id:"+AbstractGun.this.ownerId+", bx:"+this.x+", by:"+this.y+"}";
         }
 
+        public final int getOwner(){return AbstractGun.this.ownerId;}
 
     }
 

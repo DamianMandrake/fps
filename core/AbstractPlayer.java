@@ -8,7 +8,7 @@ public abstract class AbstractPlayer extends AbstractPlayerModel {
     private final static int DEFAULT_X_DELTA = 10;
 
 
-    private static AbstractControls abstractControls;
+    private AbstractControls abstractControls;
 
     private AbstractHitBox hitBox;
     private AbstractGun gun;
@@ -70,12 +70,12 @@ public abstract class AbstractPlayer extends AbstractPlayerModel {
         return this.id;
     }
 
-    public static void setAbstractControls(AbstractControls AbstractControls){
-        AbstractPlayer.abstractControls = AbstractControls;
+    public void setAbstractControls(AbstractControls AbstractControls){
+        this.abstractControls = AbstractControls;
     }
 
-    public static AbstractControls getControls(){
-        return AbstractPlayer.abstractControls;
+    public AbstractControls getControls(){
+        return this.abstractControls;
     }
 
     public void setHitBox(AbstractHitBox hitBox){
@@ -131,7 +131,8 @@ public abstract class AbstractPlayer extends AbstractPlayerModel {
     @Override
     public void paintPlayer(Graphics g){
         this.gun.paintGun(g);
-
+        g.drawString(" hp "+this.getHealthPoints(),this.x -10,this.y-10);
+        g.drawString(this.getName(),this.x-10,this.y-30);
     }
 
     @Override
